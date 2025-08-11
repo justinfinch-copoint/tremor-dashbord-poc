@@ -6,13 +6,36 @@ and [Next.js](https://nextjs.org).
 
 ## Getting started
 
-1. Install the dependencies.
+### Option 1: Using Dev Container (Recommended)
+
+This project includes a dev container configuration for a consistent development environment.
+
+1. **Prerequisites:**
+   - Docker Desktop installed and running
+   - Visual Studio Code with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+2. **Open in Dev Container:**
+   - Clone the repository
+   - Open the project in VS Code
+   - When prompted, click "Reopen in Container" or use the command palette (F1) and select "Dev Containers: Reopen in Container"
+   - The container will automatically install all npm dependencies
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. Visit [http://localhost:3000](http://localhost:3000) in your browser to view the template.
+
+### Option 2: Local Development
+
+1. Install the dependencies:
 
 ```bash
 npm install
 ```
 
-2. Then, start the development server:
+2. Start the development server:
 
 ```bash
 npm run dev
