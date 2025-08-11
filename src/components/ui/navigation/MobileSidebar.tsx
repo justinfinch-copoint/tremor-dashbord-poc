@@ -1,4 +1,3 @@
-import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import {
   Drawer,
@@ -11,52 +10,18 @@ import {
 } from "@/components/Drawer"
 import { cx, focusRing } from "@/lib/utils"
 import {
-  RiHome2Line,
-  RiLinkM,
-  RiListCheck,
   RiMenuLine,
-  RiSettings5Line,
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
-const navigation = [
-  { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
-  {
-    name: "Settings",
-    href: siteConfig.baseLinks.settings.general,
-    icon: RiSettings5Line,
-  },
-] as const
-
-const shortcuts = [
-  {
-    name: "Add new user",
-    href: "/settings/users",
-    icon: RiLinkM,
-  },
-  {
-    name: "Workspace usage",
-    href: "/settings/billing#billing-overview",
-    icon: RiLinkM,
-  },
-  {
-    name: "Cost spend control",
-    href: "/settings/billing#cost-spend-control",
-    icon: RiLinkM,
-  },
-  {
-    name: "Overview – Rows written",
-    href: "/overview#usage-overview",
-    icon: RiLinkM,
-  },
-] as const
+import { useDashboard } from "@/contexts/DashboardContext"
 
 export default function MobileSidebar() {
   const pathname = usePathname()
+  const { currentDashboard } = useDashboard()
+  
   const isActive = (itemHref: string) => {
-    if (itemHref === siteConfig.baseLinks.settings.general) {
+    if (itemHref.startsWith("/settings")) {
       return pathname.startsWith("/settings")
     }
     return pathname === itemHref || pathname.startsWith(itemHref)
@@ -86,7 +51,7 @@ export default function MobileSidebar() {
               className="flex flex-1 flex-col space-y-10"
             >
               <ul role="list" className="space-y-1.5">
-                {navigation.map((item) => (
+                {currentDashboard.navigation.map((item) => (
                   <li key={item.name}>
                     <DrawerClose asChild>
                       <Link
@@ -109,33 +74,35 @@ export default function MobileSidebar() {
                   </li>
                 ))}
               </ul>
-              <div>
-                <span className="text-sm font-medium leading-6 text-gray-500 sm:text-xs">
-                  Shortcuts
-                </span>
-                <ul aria-label="shortcuts" role="list" className="space-y-0.5">
-                  {shortcuts.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className={cx(
-                          pathname === item.href || pathname.includes(item.href)
-                            ? "text-indigo-600 dark:text-indigo-400"
-                            : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                          "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
-                          focusRing,
-                        )}
-                      >
-                        <item.icon
-                          className="size-4 shrink-0"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {currentDashboard.shortcuts && currentDashboard.shortcuts.length > 0 && (
+                <div>
+                  <span className="text-sm font-medium leading-6 text-gray-500 sm:text-xs">
+                    Shortcuts
+                  </span>
+                  <ul aria-label="shortcuts" role="list" className="space-y-0.5">
+                    {currentDashboard.shortcuts.map((item) => (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          className={cx(
+                            pathname === item.href || pathname.includes(item.href)
+                              ? "text-indigo-600 dark:text-indigo-400"
+                              : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
+                            "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
+                            focusRing,
+                          )}
+                        >
+                          <item.icon
+                            className="size-4 shrink-0"
+                            aria-hidden="true"
+                          />
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </nav>
           </DrawerBody>
         </DrawerContent>

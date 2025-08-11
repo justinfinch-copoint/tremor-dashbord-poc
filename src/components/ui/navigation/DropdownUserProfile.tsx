@@ -19,8 +19,10 @@ import {
   RiComputerLine,
   RiMoonLine,
   RiSunLine,
+  RiSettings5Line,
 } from "@remixicon/react"
 import { useTheme } from "next-themes"
+import Link from "next/link"
 import * as React from "react"
 
 export type DropdownUserProfileProps = {
@@ -90,6 +92,12 @@ export function DropdownUserProfile({
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
+            <DropdownMenuItem asChild>
+              <Link href="/settings/general" className="flex items-center">
+                <RiSettings5Line className="mr-2 size-4" aria-hidden="true" />
+                Settings
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
