@@ -22,7 +22,7 @@ import {
   RiSettings5Line,
 } from "@remixicon/react"
 import { useTheme } from "next-themes"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import * as React from "react"
 
 export type DropdownUserProfileProps = {
@@ -36,6 +36,7 @@ export function DropdownUserProfile({
 }: DropdownUserProfileProps) {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+  const router = useRouter()
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -92,11 +93,9 @@ export function DropdownUserProfile({
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
-            <DropdownMenuItem asChild>
-              <Link href="/settings/general" className="flex items-center">
-                <RiSettings5Line className="mr-2 size-4" aria-hidden="true" />
-                Settings
-              </Link>
+            <DropdownMenuItem onClick={() => router.push('/settings/general')}>
+              <RiSettings5Line className="mr-2 size-4" aria-hidden="true" />
+              Settings
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -110,13 +109,6 @@ export function DropdownUserProfile({
             </DropdownMenuItem>
             <DropdownMenuItem>
               Documentation
-              <RiArrowRightUpLine
-                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
-                aria-hidden="true"
-              />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Join Slack community
               <RiArrowRightUpLine
                 className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
                 aria-hidden="true"
