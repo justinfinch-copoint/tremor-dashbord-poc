@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation"
-import { defaultDashboard } from "@/lib/dashboards.config"
+// This page is not used - redirects are handled in next.config.mjs
+// Root URL (/) redirects to /presidents/overview
 
 export default function HomePage() {
-  redirect(defaultDashboard.defaultPage)
+  return null
 }
