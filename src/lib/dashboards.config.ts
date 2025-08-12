@@ -48,43 +48,12 @@ export const dashboards: Dashboard[] = [
     defaultPage: "/presidents/overview",
     navigation: [
       {
-        name: "Executive Summary",
+        name: "Overview",
         href: "/presidents/overview",
         icon: RiHome2Line,
       },
-      {
-        name: "KPI Dashboard",
-        href: "/presidents/kpis",
-        icon: RiLineChartLine,
-      },
-      {
-        name: "Department Performance",
-        href: "/presidents/departments",
-        icon: RiTeamLine,
-      },
-      {
-        name: "Strategic Initiatives",
-        href: "/presidents/initiatives",
-        icon: RiFileListLine,
-      },
     ],
-    shortcuts: [
-      {
-        name: "Monthly Report",
-        href: "/presidents/overview#monthly-report",
-        icon: RiFolderChartLine,
-      },
-      {
-        name: "Revenue Trends",
-        href: "/presidents/kpis#revenue",
-        icon: RiLineChartLine,
-      },
-      {
-        name: "Key Alerts",
-        href: "/presidents/overview#alerts",
-        icon: RiAlertLine,
-      },
-    ],
+    shortcuts: [],
   },
   {
     id: "finops",
@@ -96,43 +65,12 @@ export const dashboards: Dashboard[] = [
     defaultPage: "/finops/overview",
     navigation: [
       {
-        name: "Cost Overview",
+        name: "Overview",
         href: "/finops/overview",
         icon: RiHome2Line,
       },
-      {
-        name: "Budget Analysis",
-        href: "/finops/budget",
-        icon: RiPieChartLine,
-      },
-      {
-        name: "Cloud Costs",
-        href: "/finops/cloud",
-        icon: RiCloudLine,
-      },
-      {
-        name: "Cost Allocation",
-        href: "/finops/allocation",
-        icon: RiFolderChartLine,
-      },
     ],
-    shortcuts: [
-      {
-        name: "Monthly Spend",
-        href: "/finops/overview#monthly-spend",
-        icon: RiMoneyDollarCircleLine,
-      },
-      {
-        name: "Budget Alerts",
-        href: "/finops/budget#alerts",
-        icon: RiAlertLine,
-      },
-      {
-        name: "Cost Trends",
-        href: "/finops/overview#trends",
-        icon: RiLineChartLine,
-      },
-    ],
+    shortcuts: [],
   },
 ]
 
