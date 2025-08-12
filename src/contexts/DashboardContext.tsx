@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect } from "react"
-import { Dashboard, dashboards, defaultDashboard, getDashboardById, getCurrentDashboardFromPath } from "@/lib/dashboards.config"
+import { Dashboard, dashboards, getDashboardById, getCurrentDashboardFromPath } from "@/lib/dashboards.config"
 import { usePathname, useRouter } from "next/navigation"
 
 type DashboardContextType = {
@@ -34,7 +34,7 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
         setCurrentDashboardState(dashboard)
       }
     }
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     // Only update dashboard state if we're not on settings page

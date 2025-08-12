@@ -29,7 +29,13 @@ import {
 import { useOnWindowResize } from "@/lib/useOnWindowResize"
 import { cx, percentageFormatter } from "@/lib/utils"
 import { Badge } from "./Badge"
-import { getBadgeType } from "./ui/overview/DashboardChartCard"
+
+// Simple helper function to determine badge type based on evolution value
+const getBadgeType = (evolution: number) => {
+  if (evolution > 0) return "success"
+  if (evolution < 0) return "error"
+  return "neutral"
+}
 
 //#region Legend
 

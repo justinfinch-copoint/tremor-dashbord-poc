@@ -1,14 +1,7 @@
 import {
   RiHome2Line,
-  RiLineChartLine,
-  RiTeamLine,
-  RiFileListLine,
   RiBarChartBoxLine,
   RiMoneyDollarCircleLine,
-  RiPieChartLine,
-  RiCloudLine,
-  RiFolderChartLine,
-  RiAlertLine,
 } from "@remixicon/react"
 import { RemixiconComponentType } from "@remixicon/react"
 

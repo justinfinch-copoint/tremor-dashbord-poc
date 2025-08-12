@@ -1,1 +1,3 @@
 - Do not try to run the dev server.  Just let me know when I need to run it.
+- Make sure to use the context7 mcp server to get the latest library docs.
+- Make sure you build and lint the code before commiting anything.
